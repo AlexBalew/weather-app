@@ -8,6 +8,7 @@ import Weather from './Weather';
 
 export default function App() {
   const [temp, setTemp] = useState(null);
+  const [condition, setCondition] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -15,6 +16,7 @@ export default function App() {
     const { data } = await axios
       .get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`)
     setTemp(data.main.temp)
+    setCondition(data.weather[0].main)
     setIsLoading(false)
     return data
   }
@@ -51,7 +53,7 @@ export default function App() {
           ?
           <Text style={styles.text}>{errorMsg}</Text>
           :
-          <Weather temp={Math.round(temp)} />
+          <Weather temp={Math.round(temp)} condition={condition} />
       }
     </View>
   );
