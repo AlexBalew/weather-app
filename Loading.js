@@ -1,9 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { defaultGradient } from './constants';
 
 function Loading() {
-    return (<View style={styles.container}>
-        <Text style={styles.text}>Weather is loading...</Text>
-    </View>)
+    return (
+        <LinearGradient
+            colors={defaultGradient}
+            style={styles.container}>
+            <Text style={styles.text}>Weather is loading...</Text>
+        </LinearGradient>)
 }
 
 export default Loading

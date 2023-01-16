@@ -1,19 +1,21 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import conditions, { weatherOptions } from './constants';
+import conditions,{ weatherOptions, defaultGradient } from './constants';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Weather({ temp, condition }) {
     console.log(condition);
     return (
         <LinearGradient
-            colors={['#4c669f', '#3b5998', '#192f6a']}
+            colors={condition 
+                ? weatherOptions[condition].gradient 
+                : defaultGradient}
             style={styles.container}>
             <StatusBar barStyle='light-content' />
             <View style={styles.halfContainer}>
-                <Ionicons name={weatherOptions[condition]?.iconName} size={90} color='white' />
+                <MaterialCommunityIcons name={weatherOptions[condition]?.iconName} size={90} color='white' />
                 <Text style={styles.temp}>
                     {temp}°C
                 </Text>

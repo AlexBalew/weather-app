@@ -18,48 +18,65 @@ export const conditions = [
 
 export const weatherOptions = {
     Thunderstorm: {
-        iconName: 'thunderstorm',
+        iconName: 'weather-lightning',
+        gradient: ['#0F2027', '#2C5364'],
     },
     Drizzle: {
-        iconName: 'rainy',
+        iconName: 'weather-partly-rainy',
+        gradient: ['#4286f4', '#4286f4'],
     },
     Rain: {
-        iconName: 'rainy',
+        iconName: 'weather-pouring',
+        gradient: ['#373B44', '#4286f4'],
     },
     Snow: {
-        iconName: 'snow',
+        iconName: 'snowflake',
+        gradient: ['#2980B9', '#6DD5FA'],
     },
     Mist: {
-        iconName: 'cloud-outline',
+        iconName: 'weather-fog',
+        gradient: ['#215f00', '#e4e4d9'],
     },
     Smoke: {
-        iconName: 'cloud-outline',
+        iconName: 'weather-fog',
+        gradient: ['#ADA996', '#DBDBDB'],
     },
     Haze: {
-        iconName: 'cloud-outline',
+        iconName: 'weather-hazy',
+        gradient: ['#4c669f', '#3b5998'],
     },
     Dust: {
-        iconName: 'cloud-outline',
+        iconName: 'weather-fog',
+        gradient: ['#3C3B3F', '#605C3C'],
     },
     Fog: {
-        iconName: 'cloud-outline',
+        iconName: 'weather-fog',
+        gradient: ['#bdc3c7', '#2c3e50'],
     },
     Sand: {
-        iconName: 'cloud',
+        iconName: 'weather-fog',
+        gradient: ['#B79891', '#94716B'],
     },
     Ash: {
-        iconName: 'cloud',
+        iconName: 'weather-fog',
+        gradient: ['#333333', '#dd1818'],
     },
     Squall: {
-        iconName: 'thunderstorm',
+        iconName: 'weather-lightning-rainy',
+        gradient: ['#536976', '#292E49'],
     },
     Tornado: {
-        iconName: 'thunderstorm',
+        iconName: 'weather-tornado',
+        gradient: ['#536976', '#292E49'],
     },
     Clear: {
-        iconName: 'sunny',
+        iconName: 'weather-sunny',
+        gradient: ['#EDE574', '#E1F5C4'],
     },
     Clouds: {
-        iconName: 'md-cloudy',
+        iconName: 'weather-cloudy',
+        gradient: ['#4CA1Af', '#C4E0E5'],
     }
 }
+
+export const defaultGradient = ['#06beb6', '#48b1bf']

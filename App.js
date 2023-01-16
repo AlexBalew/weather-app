@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Loading from './Loading';
-import { Alert, StyleSheet, Text, View, StatusBar } from 'react-native';
+import { Alert, StyleSheet, Text, StatusBar } from 'react-native';
 import { API_KEY } from '@env'
 import * as Location from 'expo-location';
 import axios from 'axios';
 import Weather from './Weather';
+import { LinearGradient } from 'expo-linear-gradient';
+import { defaultGradient } from './constants';
 
 export default function App() {
   const [temp, setTemp] = useState(null);
@@ -47,7 +49,9 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <LinearGradient 
+    colors={defaultGradient}
+    style={styles.container}>
       <StatusBar barStyle='dark-content' />
       {
         errorMsg
@@ -56,14 +60,13 @@ export default function App() {
           :
           <Weather temp={Math.round(temp)} condition={condition} />
       }
-    </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FDF6AA',
   },
   text: {
     color: '#2c2c2c',
