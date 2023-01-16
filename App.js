@@ -11,6 +11,7 @@ import { defaultGradient } from './constants';
 export default function App() {
   const [temp, setTemp] = useState(null);
   const [condition, setCondition] = useState(null);
+  const [description, setDescription] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -19,6 +20,7 @@ export default function App() {
       .get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`)
     setTemp(data.main.temp)
     setCondition(data.weather[0].main)
+    setDescription(data.weather[0].description)
     setIsLoading(false)
     return data
   }
@@ -49,16 +51,20 @@ export default function App() {
   }
 
   return (
-    <LinearGradient 
-    colors={defaultGradient}
-    style={styles.container}>
+    <LinearGradient
+      colors={defaultGradient}
+      style={styles.container}>
       <StatusBar barStyle='dark-content' />
       {
         errorMsg
           ?
           <Text style={styles.text}>{errorMsg}</Text>
           :
-          <Weather temp={Math.round(temp)} condition={condition} />
+          <Weather
+            temp={Math.round(temp)}
+            condition={condition}
+            description={description}
+          />
       }
     </LinearGradient>
   );
