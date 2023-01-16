@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Loading from './Loading';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, View, StatusBar } from 'react-native';
 import { API_KEY } from '@env'
 import * as Location from 'expo-location';
 import axios from 'axios';
@@ -48,6 +48,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle='dark-content' />
       {
         errorMsg
           ?
@@ -62,9 +63,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-end',
-    paddingHorizontal: 30,
-    paddingVertical: 100,
     backgroundColor: '#FDF6AA',
   },
   text: {
