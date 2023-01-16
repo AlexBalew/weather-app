@@ -28,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2899ce54-f217-42d0-a857-3e685e6a565b"
+      }
+    },
+    "owner": "balew48"
   }
 }
