@@ -4,14 +4,18 @@ import { Alert, StyleSheet, Text, View } from 'react-native';
 import { API_KEY } from '@env'
 import * as Location from 'expo-location';
 import axios from 'axios';
+import Weather from './Weather';
 
 export default function App() {
-  const [coords, setCoords] = useState(null);
+  const [temp, setTemp] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const getWeather = async (latitude, longitude) => {
-    const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`)
+    const { data } = await axios
+      .get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`)
+    setTemp(data.main.temp)
+    setIsLoading(false)
     return data
   }
 
@@ -27,9 +31,7 @@ export default function App() {
 
       try {
         const { coords: { latitude, longitude } } = await Location.getCurrentPositionAsync()
-        const { data } = await getWeather(latitude, longitude)
-        setCoords(data)
-        setIsLoading(false)
+        await getWeather(latitude, longitude)
       } catch (error) {
         setErrorMsg('Something went wrong...')
         Alert.alert(error)
@@ -49,7 +51,7 @@ export default function App() {
           ?
           <Text style={styles.text}>{errorMsg}</Text>
           :
-          <Text style={styles.text}>{coords}</Text>
+          <Weather temp={Math.round(temp)} />
       }
     </View>
   );
